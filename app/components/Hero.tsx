@@ -1,80 +1,89 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { Dispatch, SetStateAction } from "react";
+import { TypeAnimation } from "react-type-animation";
 
-export default function Hero() {
+type booleanSetter = React.Dispatch<React.SetStateAction<boolean>>;
+
+interface PopUpModel {
+  setShowModal: booleanSetter;
+}
+
+const Hero: React.FC<PopUpModel> = ({ setShowModal }) => {
   return (
-    <section className="relative min-h-screen flex flex-col lg:flex-row items-center justify-between bg-gray-50 text-gray-900 px-8 overflow-hidden">
-      {/* Glowing background animation */}
+    <section className="relative flex flex-col items-center justify-center min-h-screen text-center px-6">
+      {/* Blurred Glass Card Behind Hero Text */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-tr from-teal-200/40 via-purple-200/40 to-transparent blur-3xl"
-        animate={{ opacity: [0.4, 0.8, 0.4] }}
-        transition={{ duration: 5, repeat: Infinity }}
-      />
-
-      {/* Floating particles */}
-      {[...Array(10)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-2 h-2 bg-purple-400 rounded-full"
-          animate={{
-            x: Math.random() * 800 - 400,
-            y: Math.random() * 400 - 200,
-            opacity: [0, 1, 0],
-          }}
-          transition={{
-            duration: Math.random() * 6 + 4,
-            repeat: Infinity,
-            repeatType: "reverse",
-          }}
-        />
-      ))}
-
-      <motion.div
-        initial={{ opacity: 0, x: -40 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8 }}
-        className="z-10 lg:w-1/2 space-y-6"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.4 }}
+        className="absolute inset-0 flex items-center justify-center"
       >
-        <h1 className="text-5xl font-extrabold leading-tight">
-          Hi, I’m{" "} <br/>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-teal-400">
-            Gozaki Graphics
-          </span>
-        </h1>
-        <p className="text-gray-700 max-w-md">
-          Graphic designer & motion artist bringing imagination to life through bold visuals and stories.
-        </p>
-        <div className="flex gap-4">
-          <a
-            href="#projects"
-            className="px-6 py-3 bg-gradient-to-r from-purple-500 to-teal-400 rounded-full font-semibold text-white shadow-lg hover:opacity-90 transition"
-          >
-            My Portfolio
-          </a>
-          <a
-            href="#contact"
-            className="px-6 py-3 border border-gray-400 rounded-full hover:bg-gray-200 transition"
-          >
-            Get In Touch
-          </a>
-        </div>
+        <div className="w-[80%] md:w-[60%] h-[60%] bg-white/40 backdrop-blur-2xl rounded-3xl shadow-inner"></div>
       </motion.div>
+
+      <motion.h1
+        initial={{ opacity: 0, y: 25 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="relative text-5xl md:text-7xl font-extrabold text-gray-900 mb-4 z-10"
+      >
+        {/* className="text-6xl sm:text-7xl font-extrabold bg-gradient-to-r from-indigo-400 via-fuchsia-500 to-purple-500 bg-clip-text text-transparent" */}
+        Designing{" "}
+        <span className="bg-gradient-to-r from-[#06b6d4] to-[#10b981] bg-clip-text text-transparent">
+          Visual Impact
+        </span>
+      </motion.h1>
+
+      <TypeAnimation
+        sequence={[
+          "Branding that connects",
+          2000,
+          "Designs that speak",
+          2000,
+          "Creativity that converts",
+          2000,
+        ]}
+        wrapper="h2"
+        repeat={Infinity}
+        className="relative text-xl md:text-2xl text-gray-600 z-10"
+      />
 
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.4 }}
-        className="lg:w-1/2 flex justify-center relative z-10"
+        transition={{ delay: 0.8, duration: 0.6 }}
+        className="relative mt-10 flex gap-4 z-10"
       >
-        <motion.div
-          animate={{ y: [0, -10, 0] }}
-          transition={{ repeat: Infinity, duration: 3 }}
-          className="relative w-[320px] h-[320px] rounded-full overflow-hidden border-2 border-gradient-to-r from-purple-500 to-teal-400 shadow-2xl"
+        <motion.button
+          whileTap={{
+            scale: 0.9,
+            transition: { type: "spring", stiffness: 400, damping: 10 },
+          }}
+          onClick={() =>
+            document
+              .getElementById("projects")
+              ?.scrollIntoView({ behavior: "smooth" })
+          }
+          className="bg-gradient-to-r from-[#06b6d4] to-[#10b981] text-white px-6 py-3 rounded-full font-semibold shadow-md hover:opacity-90 transition"
         >
-          <Image src="/profile.jpg" alt="Profile" fill className="object-cover" />
-        </motion.div>
+          Explore Work
+        </motion.button>
+
+        <motion.button
+          whileTap={{
+            scale: 0.9,
+            transition: { type: "spring", stiffness: 400, damping: 10 },
+          }}
+          onClick={() => setShowModal(true)}
+          className="border border-gray-300 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition"
+        >
+          Contact Me
+        </motion.button>
       </motion.div>
     </section>
   );
-}
+};
+
+export default Hero;

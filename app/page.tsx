@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
+import Image from "next/image";
 import {
   SunMedium,
   Sparkles,
@@ -13,6 +14,13 @@ import {
 import GlossyBlob from "./components/GlossyBlob";
 import TorusRing from "./components/TorusRing";
 import PrismStack from "./components/PrismStack";
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Projects from "./components/Projects";
+import Reviews from "./components/Reviews";
+import Footer from "./components/Footer";
+import Profile1 from "../public/profile1.jpg";
 
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
@@ -63,170 +71,22 @@ export default function Home() {
         />
 
         {/* Header */}
-        <header className="flex justify-between items-center py-6 px-8 sticky top-0 z-50 bg-white/70 backdrop-blur-lg border-b border-gray-200">
-          <h1 className="text-2xl font-bold tracking-tight">
-            Gozaki <span className="text-[#10b981]">Graphics</span>
-          </h1>
-          <button
-            onClick={() => setShowModal(true)}
-            className="flex items-center gap-2 px-3 py-2 border border-gray-300 rounded-xl hover:bg-gray-100 transition"
-          >
-            Contact me
-          </button>
-        </header>
+        <Header setShowModal={setShowModal} />
 
         {/* Hero */}
-        <section className="relative flex flex-col items-center justify-center min-h-screen text-center px-6">
-          {/* Blurred Glass Card Behind Hero Text */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="absolute inset-0 flex items-center justify-center"
-          >
-            <div className="w-[80%] md:w-[60%] h-[60%] bg-white/40 backdrop-blur-2xl rounded-3xl shadow-inner"></div>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="relative text-5xl md:text-7xl font-extrabold text-gray-900 mb-4 z-10"
-          >
-            {/* className="text-6xl sm:text-7xl font-extrabold bg-gradient-to-r from-indigo-400 via-fuchsia-500 to-purple-500 bg-clip-text text-transparent" */}
-            Designing{" "}
-            <span className="bg-gradient-to-r from-[#06b6d4] to-[#10b981] bg-clip-text text-transparent">
-              Visual Impact
-            </span>
-          </motion.h1>
-
-          <TypeAnimation
-            sequence={[
-              "Branding that connects",
-              2000,
-              "Designs that speak",
-              2000,
-              "Creativity that converts",
-              2000,
-            ]}
-            wrapper="h2"
-            repeat={Infinity}
-            className="relative text-xl md:text-2xl text-gray-600 z-10"
-          />
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
-            className="relative mt-10 flex gap-4 z-10"
-          >
-            <motion.button
-              whileTap={{
-                scale: 0.9,
-                transition: { type: "spring", stiffness: 400, damping: 10 },
-              }}
-              onClick={() =>
-                document
-                  .getElementById("projects")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
-              className="bg-gradient-to-r from-[#06b6d4] to-[#10b981] text-white px-6 py-3 rounded-full font-semibold shadow-md hover:opacity-90 transition"
-            >
-              Explore Work
-            </motion.button>
-
-            <motion.button
-              whileTap={{
-                scale: 0.9,
-                transition: { type: "spring", stiffness: 400, damping: 10 },
-              }}
-              onClick={() => setShowModal(true)}
-              className="border border-gray-300 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition"
-            >
-              Contact Me
-            </motion.button>
-          </motion.div>
-        </section>
+        <Hero setShowModal={setShowModal} />
 
         {/* About */}
-        <section className="py-24 px-6 md:px-20 bg-gray-50 rounded-t-[3rem] relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-6">About Me</h2>
-            <p className="text-gray-700 text-lg leading-relaxed">
-              I’m <strong>Gozaki</strong>, a modern graphic designer passionate
-              about creating clean, timeless visuals that tell stories. I
-              believe good design blends strategy and creativity — and I help
-              brands find that balance.
-            </p>
-          </div>
-        </section>
+        <About />
 
         {/* Projects */}
-        <section
-          id="projects"
-          className="py-24 px-6 md:px-20 bg-white relative z-10"
-        >
-          <h2 className="text-4xl font-bold mb-12 text-center">My Work</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-            {["Visual Identity", "Packaging Design", "Social Media Art"].map(
-              (proj, i) => (
-                <motion.div
-                  key={i}
-                  whileHover={{ scale: 1.04 }}
-                  transition={{ duration: 0.3 }}
-                  className="bg-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all"
-                >
-                  <div className="h-48 bg-gradient-to-r from-[#06b6d4] to-[#10b981]"></div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-2">{proj}</h3>
-                    <p className="text-gray-600 text-sm">
-                      A creative touch for modern brands looking to stand out.
-                    </p>
-                  </div>
-                </motion.div>
-              )
-            )}
-          </div>
-        </section>
+        <Projects />
 
         {/* Reviews */}
-        <section className="py-24 px-6 md:px-20 bg-gray-50 rounded-t-[3rem] relative z-10">
-          <h2 className="text-4xl font-bold mb-12 text-center">
-            Client Reviews
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {[
-              {
-                name: "Elite Brands Co.",
-                review:
-                  "We’ve never looked this good online. Gozaki truly understands brand identity.",
-              },
-              {
-                name: "TrendHive Studio",
-                review:
-                  "Professional, sleek, and creative. He transformed our visuals completely.",
-              },
-            ].map((r, i) => (
-              <motion.div
-                key={i}
-                whileHover={{ y: -5 }}
-                transition={{ duration: 0.3 }}
-                className="bg-white/70 backdrop-blur-lg border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-md"
-              >
-                <p className="text-gray-700 mb-4 italic">"{r.review}"</p>
-                <div className="flex items-center gap-2 text-[#10b981] font-medium">
-                  <Sparkles size={16} /> {r.name}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </section>
+        <Reviews />
 
         {/* Footer */}
-        <footer className="py-10 text-center bg-white/60 backdrop-blur-md border-t border-gray-200 text-gray-500 relative z-10">
-          © 2025 Gozaki Graphics • Designed by{" "}
-          <strong className="text-[#10b981]">Solomon TheDev</strong>
-        </footer>
+        <Footer />
 
         {/* Contact Popup Modal */}
         <AnimatePresence>
@@ -253,8 +113,8 @@ export default function Home() {
                 </button>
 
                 {/* Profile */}
-                <img
-                  src="/gozaki-profile.jpg"
+                <Image
+                  src={Profile1}
                   alt="Gozaki Profile"
                   className="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-[#10b981]/60 object-cover"
                 />
@@ -267,7 +127,7 @@ export default function Home() {
 
                 {/* WhatsApp */}
                 <a
-                  href="https://wa.me/234XXXXXXXXXX"
+                  href="https://wa.me/2348077231423"
                   target="_blank"
                   className="bg-gradient-to-r from-[#06b6d4] to-[#10b981] text-white px-6 py-3 rounded-full font-semibold shadow-md hover:opacity-90 transition inline-block"
                 >
