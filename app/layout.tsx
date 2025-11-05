@@ -26,11 +26,11 @@ export const metadata = {
     title: "Gozaki Graphics | Lokoja-based Graphic Designer",
     description:
       "Professional graphic design and branding services — flyers, logos, and visuals crafted with creativity and precision.",
-    url: "https://gozaki.vercel.app",
+    url: "https://gozaki-graphics-portfolio.vercel.app/",
     siteName: "Gozaki Graphics",
     images: [
       {
-        url: "https://gozaki.vercel.app/og-image.jpg", // replace with actual image
+        url: "https://gozaki-graphics-portfolio.vercel.app//og-image.jpg", // replace with actual image
         width: 1200,
         height: 630,
         alt: "Gozaki Graphics Visual Identity Designs",
@@ -61,12 +61,16 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* Canonical URL */}
-        <link rel="canonical" href="https://gozaki.vercel.app" />
+        <link
+          rel="canonical"
+          href="https://gozaki-graphics-portfolio.vercel.app/"
+        />
         {/* Google verify */}
         <meta
           name="google-site-verification"
           content="gsqjvb0GAb9OO6oh4piIGHIxWBnMNhletRCDZAc2gqo"
         />
+        {/* <meta name="google-site-verification" content="gsqjvb0GAb9OO6oh4piIGHIxWBnMNhletRCDZAc2gqo" /> */}
 
         {/* Structured Data for SEO */}
         <script
@@ -77,9 +81,9 @@ export default function RootLayout({
               "@type": "LocalBusiness",
               name: "Gozaki Graphics",
               image: "https://gozaki.vercel.app/og-image.jpg",
-              "@id": "https://gozaki.vercel.app",
-              url: "https://gozaki.vercel.app",
-              telephone: "+2348000000000",
+              "@id": "https://gozaki-graphics-portfolio.vercel.app/",
+              url: "https://gozaki-graphics-portfolio.vercel.app/",
+              telephone: "+2348077231423",
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "Lokoja",
