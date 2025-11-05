@@ -14,9 +14,9 @@ const Header: React.FC<PopUpModel> = ({ setShowModal }) => {
           src={ggLogo}
           alt="gg-log"
           placeholder="blur"
-          className="h-10 w-10"
+          className="h-8 w-8"
         />
-        <h1 className="text-2xl font-bold tracking-tight align-middle">
+        <h1 className="text-xl font-bold tracking-tight align-middle">
           Gozaki <span className="text-[#10b981]">Graphics</span>
         </h1>
       </div>

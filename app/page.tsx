@@ -52,7 +52,7 @@ export default function Home() {
         </motion.div>
 
         <motion.div
-          className="absolute top-96 right-0 w-72 h-72 rounded-full blur-"
+          className="absolute top-[520px] right-0 w-72 h-72 rounded-full blur-"
           animate={{
             y: [0, 20, 0],
             opacity: [0.8, 1, 0.8],

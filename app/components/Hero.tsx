@@ -12,7 +12,7 @@ interface PopUpModel {
 
 const Hero: React.FC<PopUpModel> = ({ setShowModal }) => {
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-screen text-center px-6">
+    <section className="relative flex flex-col  items-center justify-center min-h-screen text-center px-6">
       {/* Blurred Glass Card Behind Hero Text */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -20,7 +20,7 @@ const Hero: React.FC<PopUpModel> = ({ setShowModal }) => {
         transition={{ delay: 0.4 }}
         className="absolute inset-0 flex items-center justify-center"
       >
-        <div className="w-[80%] md:w-[60%] h-[60%] bg-white/40 backdrop-blur-2xl rounded-3xl shadow-inner"></div>
+        <div className="w-[80%] md:w-[60%] h-[70%] bg-white/20 backdrop-blur-2xl rounded-3xl shadow-inner"></div>
       </motion.div>
 
       <motion.h1
@@ -54,7 +54,7 @@ const Hero: React.FC<PopUpModel> = ({ setShowModal }) => {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.8, duration: 0.6 }}
-        className="relative mt-10 flex gap-4 z-10"
+        className="relative mt-10 flex gap-4 z-10 mb-40"
       >
         <motion.button
           whileTap={{
