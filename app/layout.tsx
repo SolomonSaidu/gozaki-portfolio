@@ -62,6 +62,11 @@ export default function RootLayout({
       <head>
         {/* Canonical URL */}
         <link rel="canonical" href="https://gozaki.vercel.app" />
+        {/* Google verify */}
+        <meta
+          name="google-site-verification"
+          content="gsqjvb0GAb9OO6oh4piIGHIxWBnMNhletRCDZAc2gqo"
+        />
 
         {/* Structured Data for SEO */}
         <script
